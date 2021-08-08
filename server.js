@@ -2,6 +2,9 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
+
+const PORT = process.env.PORT || 3000
+
 mongoose.connect('mongodb+srv://nicolasteofilo:200710@database01.xpr0a.mongodb.net/AGENDA?retryWrites=true&w=majority',
   {
     useNewUrlParser: true,
@@ -51,8 +54,8 @@ app.use(csrfMiddleware);
 app.use(routes);
 
 app.on('pronto', () => {
-  app.listen(3000, () => {
-    console.log('Acessar http://localhost:3000');
-    console.log('Servidor executando na porta 3000');
+  app.listen(PORT, () => {
+    console.log('Acessar http://localhost:'+PORT);
+    console.log('Servidor executando na porta' +PORT);
   });
 });
